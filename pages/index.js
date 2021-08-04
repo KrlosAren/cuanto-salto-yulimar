@@ -46,6 +46,14 @@ const selected = {
       image: Phells,
     },
   ],
+  objetos: [
+    {
+      id: 1,
+      name: 'Cubo Rubik',
+      height: 1.89,
+      image: Phells,
+    },
+  ],
 };
 
 export default function Home() {
@@ -56,17 +64,21 @@ export default function Home() {
   const [gridColumns, setGrid] = useState();
   const [img, setImg] = useState('100%');
   const [numberPhoto, setNumberPhoto] = useState([]);
-
-  const { atletas } = selected;
+  const [checkedOptions, setChecked] = useState(false);
 
   const handleChange = (e) => {
-    const value = e.target.value.toLowerCase();
-    const filterValue = atletas.find(
-      (item) => item.name.toLowerCase() === value
-    );
+    const value = Number(e.target.value);
+    const filterValue = checkedOptions.find((item) => item.id === value);
 
     setOption(filterValue);
   };
+
+  const handleCheckboxChange = (e) => {
+    const checked = selected[e.target.value];
+    setChecked(checked);
+    console.log(checked);
+  };
+
   useEffect(() => {
     const total = option !== undefined && RECORD / option.height;
     const gridColumns = Math.ceil(total);
@@ -94,11 +106,6 @@ export default function Home() {
     }
   }, [numberPhoto]);
 
-  //   <h1>
-  //   Cuanto Salto Yulimar Rojas : {total ? total.toFixed(2) : 15.67} -{' '}
-  //   {option ? `${option.name}s` : 'm'}
-  // </h1>
-
   return (
     <>
       <div>
@@ -121,14 +128,36 @@ export default function Home() {
           <article>
             <p>TRIPLE SALTO</p>
           </article>
+          <p className='header-title'>Yulimar saltó el equivalente a...</p>
           <section>
-            <p>Yulimar saltó el equivalente a...</p>
-            <input type='text' list='data' onChange={handleChange} />
-            <datalist id='data'>
-              {atletas.map((item) => (
-                <option key={item.id} value={item.name} />
-              ))}
-            </datalist>
+            <div>
+              <label htmlFor='objetos'>Objetos</label>
+              <input
+                type='radio'
+                name='option'
+                id='objetos'
+                value='objetos'
+                onChange={handleCheckboxChange}
+              />
+            </div>
+            <div>
+              <label htmlFor='atletas'>Atletas</label>
+              <input
+                onChange={handleCheckboxChange}
+                type='radio'
+                name='option'
+                id='atletas'
+                value='atletas'
+              />
+            </div>
+            <select name='option' id='option' onChange={handleChange}>
+              {checkedOptions &&
+                checkedOptions.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
+            </select>
           </section>
           <div className='img-container'>
             {option &&
@@ -208,11 +237,9 @@ export default function Home() {
         }
 
         section {
-          grid-column: 1/-1;
+          grid-column: 4/-5;
           display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
+          justify-content: space-between;
         }
 
         section > p {
@@ -223,12 +250,16 @@ export default function Home() {
 
         .img-container {
           width: 100%;
-          display: grid;
+          height: 100%;
           grid-column: 2/-2;
-          grid-template-columns: repeat(${gridColumns}, 1fr);
+          display: grid;
           gap: 20px;
           min-height: 200px;
-          height: 100%;
+          grid-template-columns: repeat(${gridColumns}, 1fr);
+          margin-top: 10px;
+          margin-bottom: 10px;
+          justify-content: center;
+          align-items: center;
         }
 
         .img-crop {
@@ -254,11 +285,21 @@ export default function Home() {
           border-radius: 5px;
         }
 
+        select {
+          min-width: 200px;
+        }
+
         .total-container > div > p {
           padding: 0 10px;
           margin: 0;
         }
 
+        .header-title {
+          width: 100%;
+          grid-column: 1/-1;
+          align-items: center;
+          text-align: center;
+        }
         footer {
           width: 100%;
           height: 40px;
