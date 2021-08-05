@@ -77,7 +77,9 @@ export default function Home() {
   const [gridColumns, setGrid] = useState();
   const [img, setImg] = useState('100%');
   const [numberPhoto, setNumberPhoto] = useState([]);
+  const [boxes, setBoxes] = useState(0);
 
+  const COLUMNS = 12;
   const { atletas, objetos } = selected;
 
   const handleChange = (e) => {
@@ -93,10 +95,11 @@ export default function Home() {
 
   useEffect(() => {
     const total = option !== undefined && RECORD / option.height;
-    let gridColumns = Math.ceil(total);
+    const gridNumber = Math.ceil(total);
     total && setTotal(total);
-    gridColumns = gridColumns <= 12 ? gridColumns : 12;
-    setGrid(gridColumns);
+    setBoxes(gridNumber);
+    const totalColumns = gridNumber > 12 ? COLUMNS : gridNumber;
+    setGrid(totalColumns);
   }, [option]);
 
   useEffect(() => {
@@ -107,9 +110,11 @@ export default function Home() {
   }, [total]);
 
   useEffect(() => {
-    const arr = Array.from(Array(gridColumns).keys());
+    const arr = Array.from(Array(boxes).keys());
     setNumberPhoto(arr);
-  }, [gridColumns]);
+    console.log('numero de cajitas');
+    console.log(arr);
+  }, [boxes]);
 
   useEffect(() => {
     const lastItem = numberPhoto.length - 1;
@@ -132,14 +137,6 @@ export default function Home() {
 
         <main>
           <div className='middle-screen'>
-            <div className='yulimar-img'>
-              <Image
-                src={yulimarSalto}
-                alt='yulimar'
-                width={400}
-                height={400}
-              />
-            </div>
             <header>
               <div className='title-container'>
                 <p>Juegos Olímpicos - Tokio 2020</p>
@@ -157,6 +154,14 @@ export default function Home() {
                 className='box-line'
                 style={{ backgroundColor: '#F33A3A' }}
               />
+              <div className='yulimar-img'>
+                <Image
+                  src={yulimarSalto}
+                  alt='yulimar'
+                  width={400}
+                  height={400}
+                />
+              </div>
               <div className='text-container'>
                 <p>
                   Es la primera mujer venezolana en ganar un{' '}
@@ -209,11 +214,11 @@ export default function Home() {
                   <Loader />
                 )}
               </div>
-              <div className='rules'>
-                <div>0 m</div>
-                <Image src={Rules} alt='props' layout='intrinsic' />
-                <div>15.67 m</div>
-              </div>
+            </div>
+            <div className='rules'>
+              <div>0 m</div>
+              <Image src={Rules} alt='props' />
+              <div>15.67 m</div>
             </div>
             <div className='total-container'>
               <div>
@@ -226,8 +231,7 @@ export default function Home() {
           </div>
 
           <footer>
-            <div>Diseñado y desarrollado por @ansilliano @krlosaren</div>
-            <div>¿¿RRSS de Yulimar acá??</div>
+            <div>@ansilliano @krlosaren</div>
           </footer>
         </main>
       </div>
@@ -241,7 +245,7 @@ export default function Home() {
           gap: 1px;
           grid-template-columns: repeat(${gridColumns}, 1fr);
           grid-template-rows: auto;
-          height: 200px;
+          height: auto;
           margin-top: 40px;
           margin-bottom: 10px;
           justify-content: center;
@@ -258,16 +262,6 @@ export default function Home() {
           grid-column: 1/-1;
           grid-row: 1/2;
           position: relative;
-        }
-
-        .middle-screen::before {
-          position: absolute;
-          background: url(${yulimarSalto});
-          content: '';
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
         }
 
         .container-fixed {

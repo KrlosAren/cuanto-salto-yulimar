@@ -115,8 +115,10 @@ export default css`
   .rules {
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    grid-column: 1/-1;
+    width: 100%;
   }
 
   .imagen-box {
@@ -178,5 +180,49 @@ export default css`
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  @media (max-width: 520px) {
+    .yulimar-img {
+      grid-column: 1/-1;
+      position: initial;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .title-container {
+      padding: 20px;
+    }
+    .text-container {
+      grid-column: 1/-1;
+      padding: 20px;
+    }
+
+    .triple-salto-header {
+      margin: 0;
+      font-size: 50px;
+      padding-right: 20px;
+    }
+
+    .footer-screen {
+      padding: 20px;
+    }
+
+    .rules {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+    }
+
+    .rules div {
+      font-size: 14px;
+    }
+
+    footer {
+      height: auto;
+    }
   }
 `;
