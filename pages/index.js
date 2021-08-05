@@ -12,7 +12,7 @@ import Rubik from '../public/img/rubik.png';
 import Rules from '../public/img/rules.svg';
 import Yulimar from '../public/img/yulimar.png';
 import Loader from '../src/components/Loader';
-import styles from './styles';
+import styles from '../src/styles/styles';
 
 const selected = {
   atletas: [
