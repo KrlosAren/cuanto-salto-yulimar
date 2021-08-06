@@ -159,7 +159,7 @@ export default function Home() {
                   alt='yulimar'
                   width={400}
                   height={400}
-                  placeholder='empty'
+                  placeholder='blur'
                 />
               </div>
               <div className='text-container'>
@@ -209,7 +209,7 @@ export default function Home() {
                       <Image
                         src={option.image}
                         alt={option.name}
-                        placeholder='empty'
+                        placeholder='blur'
                       />
                     </div>
                   ))
