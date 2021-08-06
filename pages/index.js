@@ -9,9 +9,9 @@ import Messi from '../public/img/messi.png';
 import Naymar from '../public/img/neymar.png';
 import Phells from '../public/img/phells.png';
 import Rubik from '../public/img/rubik.png';
-import Rules from '../public/img/rules.svg';
 import Yulimar from '../public/img/yulimar.png';
 import Loader from '../src/components/Loader';
+import Rules from '../src/components/Rules/Rules';
 import styles from '../src/styles/styles';
 
 const selected = {
@@ -84,7 +84,6 @@ export default function Home() {
 
   const handleChange = (e) => {
     const value = Number(e.target.value);
-    console.log(value);
     const filterValue = atletas.find((item) => item.id === value);
     const item = filterValue
       ? filterValue
@@ -103,21 +102,21 @@ export default function Home() {
   }, [option]);
 
   useEffect(() => {
+    const arr = Array.from(Array(boxes).keys());
+    setNumberPhoto(arr);
+  }, [boxes]);
+
+  useEffect(() => {
     const format = total && total.toFixed(2);
     const porcentaje = String(format).split('.');
     const imgCrop = 100 - Number(porcentaje[1]);
+    console.log({ porcentaje: imgCrop });
     setImg(`${imgCrop}%`);
   }, [total]);
 
   useEffect(() => {
-    const arr = Array.from(Array(boxes).keys());
-    setNumberPhoto(arr);
-    console.log('numero de cajitas');
-    console.log(arr);
-  }, [boxes]);
-
-  useEffect(() => {
     const lastItem = numberPhoto.length - 1;
+    console.log({ lastItem });
     const element = document.getElementById(`${lastItem}-img`);
     if (element) {
       element.classList.add('img-crop');
@@ -160,6 +159,7 @@ export default function Home() {
                   alt='yulimar'
                   width={400}
                   height={400}
+                  placeholder='empty'
                 />
               </div>
               <div className='text-container'>
@@ -171,9 +171,13 @@ export default function Home() {
                   de 15,50 m que la ucraniana Inessa Kravets obtuvo en 1995.
                 </p>
               </div>
-              <div className='tripe-salto'>
-                <p className='triple-salto-header'>TRIPLE SALTO</p>
+              <div className='triple-salto'>
+                <div className='triple-salto-header'>TRIPLE SALTO</div>
               </div>
+              <div
+                className='box-line-vinotinto'
+                style={{ backgroundColor: '#8f302f' }}
+              />
             </header>
           </div>
           <div className='footer-screen'>
@@ -205,8 +209,7 @@ export default function Home() {
                       <Image
                         src={option.image}
                         alt={option.name}
-                        height={200}
-                        width={200}
+                        placeholder='empty'
                       />
                     </div>
                   ))
@@ -214,11 +217,11 @@ export default function Home() {
                   <Loader />
                 )}
               </div>
-            </div>
-            <div className='rules'>
-              <div>0 m</div>
-              <Image src={Rules} alt='props' />
-              <div>15.67 m</div>
+              <div className='initial'>0 m</div>
+              <div className='rules'>
+                <Rules />
+              </div>
+              <div className='end'>15.67 m</div>
             </div>
             <div className='total-container'>
               <div>
@@ -265,9 +268,8 @@ export default function Home() {
         }
 
         .container-fixed {
-          width: 90%;
-          margin: 0 auto;
-          display: flex;
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
           flex-direction: column;
           grid-column: 1/-1;
         }

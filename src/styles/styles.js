@@ -2,8 +2,8 @@ import css from 'styled-jsx/css';
 
 export default css`
   main {
-    width: 100%;
-    height: auto;
+    width: 100vw;
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto auto 1fr;
@@ -25,7 +25,7 @@ export default css`
   }
 
   .title-container {
-    grid-column: 1/-1;
+    grid-column: 1/-2;
     padding-top: 10px;
     padding-right: 40px;
   }
@@ -35,24 +35,6 @@ export default css`
     text-align: right;
     text-decoration: underline;
     grid-column: 1/-1;
-  }
-
-  .triple-salto {
-    height: 100px;
-    background-color: #8f302f;
-    grid-column: 1/-1;
-  }
-
-  .triple-salto > p {
-    margin: 0;
-    color: #ffffff;
-    font-weight: 700;
-    text-align: right;
-  }
-
-  .triple-salto-header {
-    margin: 0;
-    margin-right: 30px;
   }
 
   .title-container > h1 {
@@ -68,6 +50,12 @@ export default css`
     height: 2px;
     width: 100%;
     margin-top: 4px;
+    grid-column: 1/-1;
+  }
+  .box-line-vinotinto {
+    height: 6px;
+    width: 100%;
+    margin-top: 8px;
     grid-column: 1/-1;
   }
 
@@ -88,7 +76,11 @@ export default css`
     color: #ffffff;
   }
 
-  .tripe-salto {
+  .triple-salto {
+    background-color: #8f302f;
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
     margin: 0;
     padding: 0;
     font-size: 100px;
@@ -97,8 +89,20 @@ export default css`
     background-color: #8f302f;
     grid-column: 1/-1;
     text-align: right;
+    position: relative;
   }
 
+  .triple-salto-header {
+    grid-column: 1/-2;
+    margin: 0;
+  }
+
+  .line-vinotinto {
+    width: 100%;
+    grid-column: 1/-1;
+    background-color: red;
+    height: 4px;
+  }
   article > p:before {
     content: '';
   }
@@ -114,11 +118,10 @@ export default css`
 
   .rules {
     margin: 0 auto;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    grid-column: 1/-1;
+    grid-column: 2/-2;
     width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
   }
 
   .imagen-box {
@@ -152,6 +155,7 @@ export default css`
     left: 40px;
     top: 40px;
     position: absolute;
+    z-index: 10;
   }
 
   select {
@@ -161,6 +165,21 @@ export default css`
   .total-container > div > p {
     padding: 0 10px;
     margin: 0;
+  }
+
+  .initial {
+    grid-column: 1/2;
+  }
+
+  .end {
+    grid-column: -2/-1;
+  }
+
+  .initial,
+  .end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .header-title {
@@ -182,7 +201,7 @@ export default css`
     align-items: center;
   }
 
-  @media (max-width: 520px) {
+  @media (max-width: 320px) {
     .yulimar-img {
       grid-column: 1/-1;
       position: initial;
