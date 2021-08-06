@@ -192,7 +192,7 @@ export default function Home() {
                     </option>
                   ))}
                 </optgroup>
-                <optgroup label='Objectos'>
+                <optgroup label='Objetos'>
                   {objetos.map((item) => (
                     <option key={item.id} value={item.id}>
                       {item.name}
