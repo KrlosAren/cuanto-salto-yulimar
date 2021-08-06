@@ -6,7 +6,6 @@ export default css`
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 50% 50% 1fr;
   }
 
   header {
@@ -124,6 +123,10 @@ export default css`
     grid-template-columns: auto 1fr auto;
   }
 
+  a {
+    margin-right: 10px;
+  }
+
   .imagen-box {
     width: 100%;
     height: 100%;
@@ -137,6 +140,7 @@ export default css`
     justify-self: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    width: 50%;
   }
 
   .total-container > div {
@@ -145,7 +149,7 @@ export default css`
     justify-content: center;
     align-items: center;
     border: 1px solid #29140f;
-    width: 500px;
+    width: 100%;
     height: 40px;
     background-color: #efdedd;
     border-radius: 5px;
@@ -159,7 +163,7 @@ export default css`
   }
 
   select {
-    min-width: 200px;
+    width: 30%;
   }
 
   .total-container > div > p {
@@ -192,12 +196,11 @@ export default css`
     width: 100%;
     height: 40px;
     grid-column: 1/-1;
-    grid-row: 3/-1;
     padding: 10px;
     color: #ffff;
     background-color: #29140f;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
   }
 
@@ -211,26 +214,44 @@ export default css`
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-top: 10px;
     }
 
     .title-container {
       padding: 20px;
+      grid-column: 1/-1;
     }
     .text-container {
       grid-column: 1/-1;
       padding: 20px;
+      text-align: center;
+      height: auto;
+      margin: 0;
+    }
+
+    .triple-salto {
+      padding: none;
+    }
+
+    select {
+      width: 90%;
     }
 
     .triple-salto-header {
       margin: 0;
-      font-size: 50px;
-      padding-right: 20px;
+      text-align: center;
+      font-size: 40px;
+      grid-column: 1/-1;
     }
 
-    .footer-screen {
-      padding: 20px;
+    .total-container {
+      width: 90%;
     }
 
+    .container-fixed {
+      width: 90%;
+      margin: 0 auto;
+    }
     .rules {
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -238,6 +259,11 @@ export default css`
 
     .rules div {
       font-size: 14px;
+    }
+
+    .initial,
+    .end {
+      display: none;
     }
 
     footer {

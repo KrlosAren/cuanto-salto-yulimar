@@ -234,7 +234,17 @@ export default function Home() {
           </div>
 
           <footer>
-            <div>@ansilliano @krlosaren</div>
+            <div>
+              <a
+                href='https://www.instagram.com/ansilliano/'
+                target='_blank'
+                rel='noreferrer'>
+                @ansilliano
+              </a>
+              <a href='https://krlosaren.com/' target='_blank' rel='noreferrer'>
+                @krlosaren
+              </a>
+            </div>
           </footer>
         </main>
       </div>
@@ -263,7 +273,6 @@ export default function Home() {
 
         .middle-screen {
           grid-column: 1/-1;
-          grid-row: 1/2;
           position: relative;
         }
 
@@ -276,7 +285,6 @@ export default function Home() {
 
         .footer-screen {
           grid-column: 1/-1;
-          grid-row: 2/3;
           display: grid;
           grid-template-columns: repeat(12, 1fr);
         }
