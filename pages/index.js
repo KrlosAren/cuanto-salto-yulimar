@@ -18,7 +18,7 @@ const selected = {
   atletas: [
     {
       id: 1,
-      name: 'Leonel Messi',
+      name: 'Lionel Messi',
       height: 1.7,
       image: Messi,
     },
@@ -62,7 +62,7 @@ const selected = {
     },
     {
       id: 8,
-      name: 'Airfrayer',
+      name: 'Airfryer',
       height: 0.27,
       image: Airfrayer,
     },
