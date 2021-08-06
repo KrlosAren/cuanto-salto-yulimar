@@ -204,7 +204,7 @@ export default css`
     align-items: center;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 720px) {
     .yulimar-img {
       grid-column: 1/-1;
       position: initial;
