@@ -156,10 +156,11 @@ export default css`
   }
 
   .yulimar-img {
-    left: 40px;
-    top: 40px;
+    width: 50%;
     position: absolute;
     z-index: 10;
+    display: flex;
+    top: 120px;
   }
 
   select {

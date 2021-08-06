@@ -154,13 +154,7 @@ export default function Home() {
                 style={{ backgroundColor: '#F33A3A' }}
               />
               <div className='yulimar-img'>
-                <Image
-                  src={yulimarSalto}
-                  alt='yulimar'
-                  width={400}
-                  height={400}
-                  placeholder='blur'
-                />
+                <Image src={yulimarSalto} alt='yulimar' placeholder='blur' />
               </div>
               <div className='text-container'>
                 <p>
