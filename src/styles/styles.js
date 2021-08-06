@@ -2,11 +2,11 @@ import css from 'styled-jsx/css';
 
 export default css`
   main {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: 50% 50% 1fr;
   }
 
   header {
